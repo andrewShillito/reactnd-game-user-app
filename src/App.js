@@ -24,7 +24,6 @@ class App extends React.Component {
     console.log("users:", this.state.users)
     return (
       <div id="app">
-      <Header />
         <div id="left-column">
           <Form 
             handleAddUser={this.handleAddUser}
