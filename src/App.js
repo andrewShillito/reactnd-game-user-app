@@ -196,7 +196,7 @@ function UserListTitle(props) {
 
 function UserCard(props) {
   return (
-    <div className="user-card">
+    <div className="user-card" key={props.username}>
       <p className="user-card-text">
         <div className="name">
           <span>{props.firstName}</span>
