@@ -28,17 +28,13 @@ class App extends React.Component {
       <div id="app-container">
         <Header />
         <div id="app">
-          <div id="left-column">
-            <Form 
-              handleAddUser={this.handleAddUser}
-              users={this.state.users}
-              />
-          </div>
-          <div id="right-column">        
-            <UserList 
-              users={this.state.users}
-              />
-          </div>
+          <Form 
+            handleAddUser={this.handleAddUser}
+            users={this.state.users}
+          />
+          <UserList 
+          	users={this.state.users}
+          />
         </div>
 	  </div>
     )
