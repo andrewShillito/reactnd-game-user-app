@@ -3,7 +3,7 @@ import React from "react";
 function UserCard(props) {
   return (
     <div className="user-card" key={props.username}>
-      <p className="user-card-text">
+      <div className="user-card-text">
         <div className="name">
           <span>{props.firstName}</span>
           <br />
@@ -14,7 +14,7 @@ function UserCard(props) {
           ? <span>{props.gamesPlayed}</span>
           : <span></span>
         }
-      </p>
+      </div>
     </div>
   )
 }

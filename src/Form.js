@@ -10,7 +10,6 @@ class Form extends React.Component {
     username: '',
   }
   handleInputUpdate = (target) => {
-    console.log(this.state)
     this.setState(() => ({
       [target.name]: target.value
     }))

@@ -25,6 +25,7 @@ class UserList extends React.Component {
             username={user.username}
             gamesPlayed={user.gamesPlayed}
             showGamesPlayed={this.state.showGamesPlayed}
+			key={user.username}
             />
         ))}
       </div>
