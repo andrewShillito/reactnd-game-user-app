@@ -1,6 +1,7 @@
 import React from "react";
 import FormTitle from "./FormTitle.js"
-import FormSubmitButton from "./FormSubmitButton"
+import FormSubmitButton from "./FormSubmitButton.js"
+import FormInput from "./FormInput.js"
 
 class Form extends React.Component {
   state = {
@@ -8,11 +9,12 @@ class Form extends React.Component {
     lastName: '',
     username: '',
   }
-  handleInputUpdate = (target) => (
+  handleInputUpdate = (target) => {
+    console.log(this.state)
     this.setState(() => ({
       [target.name]: target.value
     }))
-  )
+  }
   clearAllInputs = () => (
     this.setState(() => ({
       firstName: '',
@@ -36,31 +38,17 @@ class Form extends React.Component {
     <div className="form-component">
       <FormTitle />
       <form className="user-form">
-          <legend/>
-          <input 
-            type="text" 
-            name="firstName" 
-            placeholder="First Name"
-            value={this.state.firstName}
-            onChange={(event) => this.handleInputUpdate(event.target)}
-            required
-            />
-          <input 
-            type="text" 
-            name="lastName" 
-            placeholder="Last Name"
-            value={this.state.lastName}
-            onChange={(event) => this.handleInputUpdate(event.target)}
-            required
-            />
-          <input 
-            type="text"
-            name="username" 
-            placeholder="username"
-            value={this.state.username}
-            onChange={(event) => this.handleInputUpdate(event.target)}
-            required
-            />      
+     	{Object.keys(this.state).map((name) => {
+      	  return (
+            <FormInput 
+              name={name}
+              placeholder={name}
+			  value={this.state.name}
+			  key={name}
+			  handleInputUpdate={this.handleInputUpdate}
+			  />
+      		)
+    	})}
       </form>
       <FormSubmitButton 
         handleAddUser={this.props.handleAddUser}
