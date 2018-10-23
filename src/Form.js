@@ -33,6 +33,12 @@ class Form extends React.Component {
     return Object.keys(newObj).every((key) => newObj[key])
   }
   render() {
+    const newObj = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      username: this.state.username,
+      gamesPlayed: Math.floor(Math.random()*8),
+    }
     return (
     <div className="form-component">
       <FormTitle />
@@ -49,14 +55,13 @@ class Form extends React.Component {
       		)
     	})}
       </form>
-      <FormSubmitButton 
-        handleAddUser={this.props.handleAddUser}
-        firstName={this.state.firstName}
-        lastName={this.state.lastName}
-        username={this.state.username}
-        checkInputValidity={this.checkInputValidity}
-        checkUsernameValidity={this.checkUsernameValidity}
-        />
+      <button 
+        className="form-submit-button"
+        onClick={this.checkUsernameValidity(this.state.username) ? () => this.props.handleAddUser(newObj) : () => alert("Usernames must be unique")}
+        disabled={!this.checkInputValidity(newObj)}
+      >
+      Submit
+	  </button>
     </div>
     )
   }

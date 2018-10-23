@@ -106,7 +106,7 @@ input {
 /* UserList Styles */
 
 .list-component {
-  width: 60%;
+  width: 95%;
 }
 
 .user-list-title {
@@ -116,20 +116,51 @@ input {
   text-align: center;
 }
 
+.user-card-text {
+  display: flex;
+  align-items: center;
+}
+
 .user-card {
-  font-size: 20px;
   width: 100%;
+  min-height: 100px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14);
   padding: 0 .5em;
   box-sizing: border-box;
 }
 
-.user-card-text {
+.user-card-text span {
+  font-size: 40px;
+}
+
+.name {
+  float: left;
+  width: 30%;
+}
+
+.username {
+  float: left;
+  width: 30%;
+}
+
+.games-played {
+  float: right;
   display: flex;
   justify-content: space-between;
+  width: 30%;
+  align-items: center;
+}
+
+.games-played button {
+  font-size: 14px;
+  background-color: #42f4a1;
+  color: white;
 }
 
 /* Media Queries */
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 750px) {
+  .user-card-text span {
+  font-size: 30px;
+}
 }
