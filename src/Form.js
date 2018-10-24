@@ -38,7 +38,7 @@ class Form extends React.Component {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       username: this.state.username,
-      gamesPlayed: Math.floor(Math.random()*8),
+      gamesPlayed: 0,
 	  showGames: true,
     }
     return (
