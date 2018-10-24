@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Header from "./Header.js"
 import Form from "./Form.js"
-import UserList from "./UserList.js"
 
 /*
 This exercise will help you put together and practice all of the concepts you've
@@ -27,15 +26,10 @@ class App extends React.Component {
     return (
       <div id="app-container">
         <Header />
-        <div id="app">
-          <Form 
-            handleAddUser={this.handleAddUser}
-            users={this.state.users}
-          />
-          <UserList 
-          	users={this.state.users}
-          />
-        </div>
+        <Form
+          handleAddUser={this.handleAddUser}
+  		  users={this.state.users}
+  		  />
 	  </div>
     )
   }

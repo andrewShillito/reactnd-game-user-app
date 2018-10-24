@@ -1,7 +1,8 @@
 import React from "react";
 import FormTitle from "./FormTitle.js"
-import FormSubmitButton from "./FormSubmitButton.js"
 import FormInput from "./FormInput.js"
+import UserListTitle from "./UserListTitle.js"
+import UserCard from "./UserCard.js"
 
 class Form extends React.Component {
   state = {
@@ -29,8 +30,8 @@ class Form extends React.Component {
     }
     return true;
   }
-  checkInputValidity = (newObj) => {
-    return Object.keys(newObj).every((key) => newObj[key])
+  checkInputValidity = (newUser) => {
+    return Object.keys(this.state).every((field) => this.state[field].length)
   }
   render() {
     const newObj = {
@@ -38,30 +39,46 @@ class Form extends React.Component {
       lastName: this.state.lastName,
       username: this.state.username,
       gamesPlayed: Math.floor(Math.random()*8),
+	  showGames: true,
     }
     return (
-    <div className="form-component">
-      <FormTitle />
-      <form className="user-form">
-     	{Object.keys(this.state).map((name) => {
-      	  return (
-            <FormInput 
-              name={name}
-              placeholder={name}
-			  value={this.state.name}
-			  key={name}
-			  handleInputUpdate={this.handleInputUpdate}
-			  />
-      		)
-    	})}
-      </form>
-      <button 
-        className="form-submit-button"
-        onClick={this.checkUsernameValidity(this.state.username) ? () => this.props.handleAddUser(newObj) : () => alert("Usernames must be unique")}
-        disabled={!this.checkInputValidity(newObj)}
-      >
-      Submit
-	  </button>
+    <div id="app">
+      <div className="form-component">
+        <FormTitle />
+        <form className="user-form">
+          {Object.keys(this.state).map((name) => {
+            return (
+              <FormInput 
+                name={name}
+                placeholder={name}
+                value={this.state.name}
+                key={name}
+                handleInputUpdate={this.handleInputUpdate}
+                />
+              )
+          })}
+        </form>
+        <button 
+          className="form-submit-button"
+          onClick={this.checkUsernameValidity(this.state.username) ? () => this.props.handleAddUser(newObj) : () => alert("Usernames must be unique")}
+          disabled={!this.checkInputValidity(newObj)}
+        >
+        Submit
+        </button>
+      </div>
+	  <div className="list-component">
+        <UserListTitle/>
+        {this.props.users.map((user) => (
+          <UserCard 
+            firstName={user.firstName}
+            lastName={user.lastName}
+            username={user.username}
+            gamesPlayed={user.gamesPlayed}
+			showGames={user.showGames}
+			key={user.username}
+            />
+        ))}
+      </div>
     </div>
     )
   }
